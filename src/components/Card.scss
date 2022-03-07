@@ -1,0 +1,68 @@
+.flower {
+  &__card {
+    height: 35rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    position: relative;
+    background-size: cover;
+    
+  }
+
+  &__name {
+    color: white;
+    line-height: 1.5rem;
+    font-weight: 400;
+    font-size: 2rem;
+    font-family: Ubuntu;
+    margin-bottom: .8rem;
+  }
+
+  &__description {
+    color: white;
+    font-family: Ubuntu;
+    margin-bottom: 2rem;
+  }
+
+  &__btn {
+    border-radius: 2rem;
+    border: none;
+    color: white;
+    margin-bottom: 2.5rem;
+    background-color: #00000080;
+    padding: 0.9rem 1.5rem;
+    cursor: pointer;
+
+    &:active{
+        transform: scale(1.05);
+    }
+  }
+
+  &__favourite {
+    position: absolute;
+    background-color: white;
+    padding: 0.5rem;
+    border-radius: 50%;
+    top: 1rem;
+    right: 1rem;
+
+    img {
+      width: 2.2rem;
+      height: 2rem;
+    }
+
+    svg{
+      width: 2.2rem;
+      height: 2rem;
+    }
+  }
+
+  &__card:hover &__btn {
+    background-image: linear-gradient(270deg, #ecbcb3 0%, #eaa79e 100%);
+  }
+
+  &__card:hover &__favourite {
+    background-color: #ecbcb3;
+  }
+}

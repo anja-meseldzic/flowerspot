@@ -1,0 +1,29 @@
+.modal{
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    background-color: rgba(black, .5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__content{
+        background-color: white;
+        border-radius: 3px;
+        width:35%;
+        
+        
+    }
+
+   
+}
+.heading-2{
+    margin: 2rem;
+    font-family: main;
+    font-size: 2rem;
+}
+
+

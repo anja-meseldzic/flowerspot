@@ -1,0 +1,43 @@
+
+.input{
+    font-family: main;
+    font-size: 1.3rem;
+    font-weight: 400;
+    padding: 0 1rem;
+
+    &__label{
+        display: block;
+        text-align: left;
+        padding: 0 2rem;
+        transform: translateY(-4.7rem);
+        font-size: 1rem;
+        color: #949EA0;
+
+    }
+
+    &__text{
+        width: 100%;
+        background-color: #F5F6F7;
+        border : 1px solid #DFE5EA;
+        outline: 0;
+        border-radius: 3px;
+        height: 5rem;
+        padding: 0 2rem;
+        font-family: main;
+        font-size: 1.3rem;
+        font-weight: 500;
+        
+    }
+ 
+    &:focus::placeholder{
+        transform: translateY(-1.5rem);
+        font-size: 1rem;
+        color: blueviolet;
+    }
+
+    &:active::placeholder{
+        transform: translateY(-1.5rem);
+        font-size: 1rem;
+        color: blueviolet;
+    }
+}
