@@ -6,7 +6,6 @@ import Logo from "../assets/search-svgrepo-com.svg";
 import Header from "../components/Header";
 import Card from "../components/Card";
 import { getFlowers } from "../store/actions/FlowersActions";
-import Modal from "../components/Modal";
 
 function Home() {
   const dispatch = useDispatch();
@@ -15,33 +14,34 @@ function Home() {
   }, []);
 
   const flowers = useSelector((state) => state.flowers.flowers);
-  console.log(flowers);
+  const isLoggedIn = useSelector((state) => state.auth.token);
 
   return (
     <Fragment>
-      <Header ></Header>
-      <section className="about">
-        <div>
-          <h1 className="heading-1">Discover flowers around you</h1>
-          <p className="about__text">
-            Explore between more than 8.427 sightings
-          </p>
-          <div className="about__search">
-            <input
-              type="text"
-              className="about__search-input"
-              placeholder="Looking for something specific?"
-            />
-            <img src={Logo} alt="logo"></img>
+      <Header></Header>
+      {!isLoggedIn && (
+        <section className="about">
+          <div>
+            <h1 className="heading-1">Discover flowers around you</h1>
+            <p className="about__text">
+              Explore between more than 8.427 sightings
+            </p>
+            <div className="about__search">
+              <input
+                type="text"
+                className="about__search-input"
+                placeholder="Looking for something specific?"
+              />
+              <img src={Logo} alt="logo"></img>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
       <section className="flowers">
         {flowers.map((flower) => (
           <Card flower={flower} key={flower.id}></Card>
         ))}
       </section>
-      
     </Fragment>
   );
 }
