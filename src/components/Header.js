@@ -25,7 +25,8 @@ function Header() {
   const [email1, setEmail1] = useState("");
 
   const user = useSelector((state) => state.user.user);
-
+  console.log(user);
+  console.log(isLoggedIn);
 
   const showModal = () => {
     setIsShown(true);
@@ -93,7 +94,7 @@ function Header() {
       ) : (
         <button className="profile-info" onClick={showProfileInfo}>
           <p className="profile-info__text">
-            {user.first_name} {user.last_name}
+            
           </p>
           <img src={ProfilePhoto} alt="profilePhoto" />
         </button>
@@ -184,10 +185,10 @@ function Header() {
           </div>
           <div className="profile-modal__info">
             <label className="profile-modal__label">First name</label>
-            <label className="profile-modal__text">{user.first_name}</label>
+            <label className="profile-modal__text"></label>
 
             <label className="profile-modal__label">Last name</label>
-            <label className="profile-modal__text">{user.last_name}</label>
+            <label className="profile-modal__text"></label>
 
             <label className="profile-modal__label">Date of birth</label>
             <label className="profile-modal__text">02/02/1998</label>
