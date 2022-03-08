@@ -78,7 +78,7 @@ function Header() {
       <button className="header__btn">Flowers</button>
       <button className="header__btn">Latest sightings</button>
       <button className="header__btn">Favourites</button>
-      {isLoggedIn === null ? (
+      {!isLoggedIn ? (
         <Fragment>
           <button
             className="header__btn header__btn--login"
