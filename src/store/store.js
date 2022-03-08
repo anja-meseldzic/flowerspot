@@ -3,13 +3,15 @@ import thunk from "redux-thunk";
 
 import authReducer from "./reducers/AuthReducer.js";
 import FlowersReducer from "./reducers/FlowersReducer.js";
+import UserReducer from "./reducers/UserReducer.js";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(
   combineReducers({
     auth: authReducer,
-    flowers: FlowersReducer
+    flowers: FlowersReducer,
+    user:UserReducer
   }),
   composeEnhancers(applyMiddleware(thunk))
 );
