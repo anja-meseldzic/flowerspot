@@ -1,5 +1,5 @@
 const initialState = {
-  token: null,
+  token: localStorage.getItem("token"),
 };
 
 function AuthReducer(state = initialState, action) {
