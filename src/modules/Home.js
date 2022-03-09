@@ -18,7 +18,6 @@ function Home() {
 
   return (
     <Fragment>
-      <Header></Header>
       {!isLoggedIn && (
         <section className="about">
           <div>

@@ -1,0 +1,100 @@
+.card {
+  width: 28rem;
+  height: 50rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 2rem 4rem rgba($color: #000000, $alpha: 0.2);
+
+  &__img {
+    height: 55%;
+    background-size: cover;
+    img {
+      height: 100%;
+    }
+  }
+
+  &__location {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+
+    display: flex;
+    background-color: white;
+    border-radius: 2rem;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      height: 1.3rem;
+      width: 1rem;
+      margin-left: 1rem;
+    }
+    p {
+      font-size: 1.2rem;
+      padding: 0.65rem 1rem;
+      color: #df9186;
+    }
+  }
+
+  &__data {
+    height: 45%;
+    margin: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &__user {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2.5rem;
+  }
+
+  &__text {
+    font-family: font2;
+    max-height: 10vh;
+    font-size: 1.2rem;
+    line-height: 1.5rem;
+    font-weight: 500;
+    text-align: justify;
+    color: #949ea0;
+    overflow-y: auto;
+  }
+
+  &__actions {
+    display: flex;
+    margin-top: 2rem;
+    justify-content: center;
+    align-items: flex-end;
+    padding-top: 1rem;
+    border-top: 1px solid #949ea0;
+    &--icon {
+      margin-right: 1rem;
+    }
+
+    p {
+      font-size: 1.1rem;
+      font-family: main;
+      color: #949ea0;
+      margin-right: 2rem;
+    }
+  }
+}
+
+.user {
+  margin-left: 1.5rem;
+  text-align: left;
+  &__flower {
+    font-family: main;
+    font-size: 1.5rem;
+  }
+
+  &__username {
+    font-family: main;
+    font-size: 1.2rem;
+    font-style: italic;
+    color: #949ea0;
+    margin-top: 0.5rem;
+  }
+}
