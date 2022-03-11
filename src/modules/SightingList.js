@@ -14,23 +14,23 @@ const SightingList = () => {
 
   return (
     <Fragment>
-      <header className="header">
-        <div className="header__content">
-          <p className="header__main">Sighting List</p>
-          <p className="header__sub">
+      <section className="header1">
+        <div className="header1__content">
+          <p className="header1__main">Sighting List</p>
+          <p className="header1__sub">
             Explore between more than 8,427 sightings
           </p>
         </div>
+          <button className="addSightingBtn">+ Add New Sighting</button>
+      </section>
+      <section className="sightings">
+        {sightings.map((sighting) => 
+          <div className="kartica"></div>
+        )}
+      </section>
+      <section className="footer">
         <button className="addSightingBtn">+ Add New Sighting</button>
-      </header>
-      <main className="sightings">
-        {sightings.map((sighting) => {
-          console.log(sighting);
-        })}
-      </main>
-      <footer className="footer">
-        <button className="addSightingBtn">+ Add New Sighting</button>
-      </footer>
+      </section>
     </Fragment>
   );
 };

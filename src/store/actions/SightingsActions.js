@@ -1,9 +1,14 @@
 import SightingsService from "../../api/SightingsService"
 
-export const setAllSightings = (payload) =>{
+export const setAllSightings = (payload) =>({
     type: "SET_SIGHTINGS",
     payload
-}
+});
+
+export const addSighting = (payload) =>({
+    type: "ADD_SIGHTING",
+    payload
+});
 
 export const getSightings = () => {
     return (dispatch) => {
@@ -16,7 +21,7 @@ export const getSightings = () => {
 export const createSighting = (payload) => {
     return (dispatch) => {
         SightingsService.createSighting(payload).then((res) =>{
-            //dispatch(setAllSightings(res.data.sightings));
+            dispatch(addSighting(res.data.sighting));
         }).catch((err) => {console.log(err)})
     }
 }
