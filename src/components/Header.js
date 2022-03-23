@@ -1,19 +1,26 @@
 import "./Header.scss";
 import Logo from "../assets/Vector.svg";
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import Modal from "./Modal";
 import FormInput from "./FormInput";
 import { logoutUser, registerUser, login } from "../store/actions/AuthActions";
 import { useDispatch, useSelector } from "react-redux";
 import ProfilePhoto from "../assets/menu_profile_holder.png";
 import ProfileModalPicture from "../assets/profile-holder.png";
+import { getUserInfo } from "../store/actions/UserActions";
+import { useNavigate } from "react-router-dom";
 
 function Header() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const isLoggedIn = useSelector((state) => state.auth.token);
 
+  useEffect(() => {
+    dispatch(getUserInfo());
+  }, []);
+
   const [shown, setIsShown] = useState(false);
-  const [shown2, setIsShown2] = useState(false);
+  const [loginFormShown, setLoginFormShown] = useState(false);
   const [profileShown, setIsProfileShown] = useState(false);
 
   const [email, setEmail] = useState("");
@@ -21,18 +28,17 @@ function Header() {
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
   const [date, setDate] = useState("");
-  const [password1, setPassword1] = useState("");
-  const [email1, setEmail1] = useState("");
+  const [passwordLoginForm, setPasswordLoginForm] = useState("");
+  const [emailLoginForm, setEmailLoginForm] = useState("");
 
   const user = useSelector((state) => state.user.user);
-
 
   const showModal = () => {
     setIsShown(true);
   };
 
   function showModal2() {
-    setIsShown2(true);
+    setLoginFormShown(true);
   }
 
   const register = (event) => {
@@ -47,25 +53,29 @@ function Header() {
 
     dispatch(registerUser(user));
     setIsShown(false);
+    navigate("/");
   };
 
   const loginUser = (event) => {
     event.preventDefault();
     const cred = {
-      email: email1,
-      password: password1,
+      email: emailLoginForm,
+      password: passwordLoginForm,
     };
 
     dispatch(login(cred));
-    setIsShown2(false);
+    setLoginFormShown(false);
+    navigate("/");
   };
 
   const logOut = () => {
     setIsProfileShown(false);
     dispatch(logoutUser());
+    navigate("/");
   };
 
   const showProfileInfo = () => {
+    dispatch(getUserInfo());
     setIsProfileShown(true);
   };
 
@@ -93,7 +103,7 @@ function Header() {
       ) : (
         <button className="profile-info" onClick={showProfileInfo}>
           <p className="profile-info__text">
-            {user.first_name} {user.last_name}
+            {user?.first_name} {user?.last_name}
           </p>
           <img src={ProfilePhoto} alt="profilePhoto" />
         </button>
@@ -145,8 +155,8 @@ function Header() {
       </Modal>
 
       <Modal
-        shown={shown2}
-        onClose={() => setIsShown2(false)}
+        shown={loginFormShown}
+        onClose={() => setLoginFormShown(false)}
         heading="Welcome Back!"
       >
         <form className="form" onSubmit={loginUser}>
@@ -154,13 +164,13 @@ function Header() {
             label="Email address"
             type="email"
             id="email"
-            onChange={(e) => setEmail1(e.target.value)}
+            onChange={(e) => setEmailLoginForm(e.target.value)}
           />
           <FormInput
             label="Password"
             type="password"
             id="password"
-            onChange={(e) => setPassword1(e.target.value)}
+            onChange={(e) => setPasswordLoginForm(e.target.value)}
           />
           <div className="div">
             <button className="div--btn">Login to your Account</button>
@@ -184,10 +194,10 @@ function Header() {
           </div>
           <div className="profile-modal__info">
             <label className="profile-modal__label">First name</label>
-            <label className="profile-modal__text">{user.first_name}</label>
+            <label className="profile-modal__text">{user?.first_name}</label>
 
             <label className="profile-modal__label">Last name</label>
-            <label className="profile-modal__text">{user.last_name}</label>
+            <label className="profile-modal__text">{user?.last_name}</label>
 
             <label className="profile-modal__label">Date of birth</label>
             <label className="profile-modal__text">02/02/1998</label>
